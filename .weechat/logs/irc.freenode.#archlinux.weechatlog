@@ -1,0 +1,196 @@
+2018-10-12 12:10:33	 ? 	_sigsegv (~sigsegv@156.222.234.163) has joined #archlinux
+2018-10-12 12:10:33	 - 	Topic for #archlinux is "Welcome to Arch Linux, Good Luck: https://archlinux.org | Rules: https://goo.gl/XWFreH | Pastebins: https://ptpb.pw https://gist.github.com https://bpaste.net | Become an official Arch Tester: https://goo.gl/48qpvG | If you didn't read the topic you will be eaten by a grue | Arch Linux AMA: https://redd.it/9emwtu"
+2018-10-12 12:10:33	 - 	Topic set by phrik (phrik@archlinux/bot/phrik) on  
+2018-10-12 12:10:34	 - 	Channel #archlinux: 1630 nicks (2 ops, 0 voices, 1628 normals)
+2018-10-12 12:10:34	 - 	Channel created on  
+2018-10-12 12:10:47	 ? 	phos (~daniel@83-233-130-160.cust.bredband2.com) has joined #archlinux
+2018-10-12 12:12:04	 ? 	SergeantBiggs (reinejo@login.zedat.fu-berlin.de) has joined #archlinux
+2018-10-12 12:12:05	Khorne	rozica, pastebin the full error
+2018-10-12 12:12:07	vladi_	Khorne, at GRUB_CMD_LINUX="CRYPTDEVICE=/DEV/DISK/BY-UUID/mumble-mumble-mumble:cryptroot root=/dev/mapper/cryptroot" which seems correct, I even double-check the uuid cyphers and letters and they are correct
+2018-10-12 12:12:08	Khorne	or full output
+2018-10-12 12:12:22	 ?  	gooly (none@gateway/shell/elitebnc/x-jrubiwqojqlapwgb) has left #archlinux ("Leaving")
+2018-10-12 12:12:22	 ? 	Nicnux (~nicklas@93-160-21-41-cable.dk.customer.tdc.net) has joined #archlinux
+2018-10-12 12:12:28	vladi_	Khorne, indeed the error given now is that "I should set a kernel first"
+2018-10-12 12:12:31	 ?  	noctavian_ (~noctavian@gateway/tor-sasl/noctavian) has quit (Remote host closed the connection)
+2018-10-12 12:12:41	vladi_	Khorne, so maybe connect again and re-install the kernel?
+2018-10-12 12:12:50	 ? 	noctavian (~noctavian@gateway/tor-sasl/noctavian) has joined #archlinux
+2018-10-12 12:13:12	Khorne	vladi_, check if the vmlinuz-linux file (the kernel) is in the right plce on the ESP then
+2018-10-12 12:13:22	rozica	Khorne: I only see it in the lower right corner of the screen
+2018-10-12 12:13:25	Khorne	And that the grub.cfg reflects that location
+2018-10-12 12:13:36	Khorne	rozica, run your bar from a shell..
+2018-10-12 12:13:38	rozica	Khorne: if I could paste the whloe log or know where it is I Would
+2018-10-12 12:14:00	 ? 	Namarrgon (~glei@archlinux/op/namarrgon) has joined #archlinux
+2018-10-12 12:14:05	 ?  	rorro (~rorro@h-170-152-58.A163.priv.bahnhof.se) has quit (Remote host closed the connection)
+2018-10-12 12:14:27	 ?  	acresearch (~acresearc@unaffiliated/acresearch) has quit (Quit: WeeChat 2.2)
+2018-10-12 12:14:38	 ?  	inferno-geek (~inferno-g@94.25.170.55) has quit (Remote host closed the connection)
+2018-10-12 12:14:50	vladi_	Khorne, sorry I would need some more deets to be able to do that :)
+2018-10-12 12:15:14	 ?  	mtkaplanoglu (~Thunderbi@213.74.174.146) has quit (Quit: mtkaplanoglu)
+2018-10-12 12:15:44	Khorne	Same
+2018-10-12 12:16:19	Khorne	Kernel should be in the root directory if the ESP or ESP/EFI
+2018-10-12 12:16:54	 ?  	AntiComposite (~AntiCompo@wikipedia/AntiCompositeNumber) has quit (Quit: Uh oh, the bouncer's gone down.)
+2018-10-12 12:17:10	Khorne	And somewhere in the grub cfg it should point to that file
+2018-10-12 12:17:23	rozica	Khorne: Cause: invalid type: string "BAT1", expected usize for key `device`
+2018-10-12 12:17:50	rozica	Khorne: and the first line Configuration error: failed to deserialize block config.
+2018-10-12 12:18:25	vladi_	Khorne, actually when I run "blkid | grep crypto" it gives /dev/sda2: UUID=" (the same on GRUB_CMD_LINUX line) but then it continues with TYPE="crypto_LUKS"  PARTLABEL="/" PARTUUID="a different one" is that correct? I dunno
+2018-10-12 12:18:50	vladi_	Khorne, checking the "/" directory for the kernel now...
+2018-10-12 12:19:37	 ? 	AntiComposite (~AntiCompo@wikipedia/AntiCompositeNumber) has joined #archlinux
+2018-10-12 12:19:43	vladi_	Khorne, I don't recognize any kernel file in the "/" directory, just the regular folders from bin to var
+2018-10-12 12:20:12	Khorne	The root of the esp
+2018-10-12 12:20:23	 ?  	ping (~pong@unaffiliated/ping) has quit
+2018-10-12 12:20:32	Khorne	Not /
+2018-10-12 12:20:32	 ? 	mohsen_1 (uid289573@gateway/web/irccloud.com/x-nikzrdgmsiioxlfl) has joined #archlinux
+2018-10-12 12:20:32	rozica	Khorne: still no clue what to google next :)
+2018-10-12 12:20:32	Khorne	Likely in /boot or /boot/EFI vladi_
+2018-10-12 12:20:32	rozica	Don't understand what's wrong with string "BAT1"
+2018-10-12 12:20:47	 ?  	hxc0 (~hxc0@unaffiliated/hxc0) has quit (Ping timeout: 268 seconds)
+2018-10-12 12:20:47	grawity	the fact that it's a string and your app doesn't want a string
+2018-10-12 12:20:47	 ?  	n17ikh_ (~n17ikh@unaffiliated/n17ikh) has quit (Ping timeout: 252 seconds)
+2018-10-12 12:20:47	 ?  	isgy (~jy@213.152.161.20) has quit (Ping timeout: 250 seconds)
+2018-10-12 12:20:57	 ? 	n17ikh (~n17ikh@unaffiliated/n17ikh) has joined #archlinux
+2018-10-12 12:21:03	Khorne	pretty much, report it to upstrem
+2018-10-12 12:21:11	Khorne	Upstream*
+2018-10-12 12:21:13	 ? 	mlv (~mlv@81.17.24.202) has joined #archlinux
+2018-10-12 12:21:26	 ?  	Xueluo (~Xueluo@36.110.118.67) has quit (Ping timeout: 252 seconds)
+2018-10-12 12:21:30	rozica	ok
+2018-10-12 12:21:33	rozica	weird
+2018-10-12 12:21:38	Khorne	usize is rusts unsigned integer
+2018-10-12 12:21:42	rozica	thanx
+2018-10-12 12:21:53	rozica	maybe if I convert BAT1 to unsigned integer if that's a thing
+2018-10-12 12:21:55	vladi_	Khorne, ok checking
+2018-10-12 12:21:58	grawity	it isn't
+2018-10-12 12:22:07	vladi_	Khorne, ok checking thx man ;)
+2018-10-12 12:23:00	 - 	Martchus_ is now known as Martchus
+2018-10-12 12:23:29	 ? 	Benzi-Junior (~BenziJuni@213-213-143-178.xdsl.is) has joined #archlinux
+2018-10-12 12:23:54	vladi_	Khorne, there are various files and folders among which EFI grub initramfs-linux-fallback.img initramfs-linux.img initramfs-linux-lts.img vmlinuz-linux vmlinux-linux-lts
+2018-10-12 12:24:10	 ?  	dt23_ (~horst@gateway/tor-sasl/dt23) has quit (Remote host closed the connection)
+2018-10-12 12:24:20	vladi_	Khorne, so it seems like there are multiple kernels, among which I recall I did install the lts one for stability purposes
+2018-10-12 12:24:27	 ? 	agarnier (~elgrec@193.51.236.200) has joined #archlinux
+2018-10-12 12:24:40	vladi_	Khorne, in EFI folders is arch-grub
+2018-10-12 12:24:44	 ? 	dt23_ (~horst@gateway/tor-sasl/dt23) has joined #archlinux
+2018-10-12 12:25:35	vladi_	Khorne, checking /boot/grub/grub.cfg now
+2018-10-12 12:26:21	 ? 	deicide- (~deicide-@unaffiliated/deicide-) has joined #archlinux
+2018-10-12 12:27:18	 ?  	deicide- (~deicide-@unaffiliated/deicide-) has quit (Read error: Connection reset by peer)
+2018-10-12 12:27:36	 ? 	deicide- (~deicide-@unaffiliated/deicide-) has joined #archlinux
+2018-10-12 12:28:08	 ? 	kai1 (~kai@2a02:908:4f3:90e0:1525:153a:33aa:4da) has joined #archlinux
+2018-10-12 12:28:33	vladi_	Khorne, I think I'm a jerk, after reinstalling grub I forgot to grub-mkconfig indeed in grub.cfg there were none of those kernels ;) just did, now reboot and let's see, but it seems like this was the issue now, not sure why the update messed up with grub in the first place though, a minute and I'll let u know
+2018-10-12 12:28:36	 ?  	fogobogo (~fogobogo@unaffiliated/fogobogo) has quit (Quit: WeeChat 2.2)
+2018-10-12 12:31:05	vladi_	Khorne, it seems like is working even if I get a strange "(1 of 2) then (2 of 2) A start job is running for mumble-mumble"
+2018-10-12 12:32:21	vladi_	Khorne, and it worksssss!!! yess!!! how can I thank you? don't u have the "buy me a coffee" thing? :)
+2018-10-12 12:32:23	Khorne	Check the fstab if there are outdated mountpoints/devices in it or systemd.mount units
+2018-10-12 12:32:31	Khorne	vladi_, no, it's fine, dont worry
+2018-10-12 12:33:03	 ? 	paininabox (~dustin@host-72-174-17-78.msl-mt.client.bresnan.net) has joined #archlinux
+2018-10-12 12:33:32	vladi_	Khorne, well thanks a lot anyway ;)))
+2018-10-12 12:33:38	vladi_	bye bye
+2018-10-12 12:33:45	Khorne	o/
+2018-10-12 12:33:50	 ?  	vladi_ (~vladi@net-5-88-225-87.cust.vodafonedsl.it) has quit (Remote host closed the connection)
+2018-10-12 12:34:51	 ? 	aml (~anton@h-213-221.A392.priv.bahnhof.se) has joined #archlinux
+2018-10-12 12:36:33	 ? 	gxt (~gxt@2a02:908:e851:4020:d0af:4a79:fafb:2dd7) has joined #archlinux
+2018-10-12 12:36:55	 ? 	Xiti (~Xiti-@unaffiliated/xiti) has joined #archlinux
+2018-10-12 12:37:51	 ?  	epony (~epony@unaffiliated/epony) has quit (Quit: QUIT)
+2018-10-12 12:38:01	 ?  	sublimination (~weechat@gateway/tor-sasl/sublimination) has quit (Ping timeout: 256 seconds)
+2018-10-12 12:38:14	 ? 	uniusz (~uniusz@gateway/tor-sasl/fndreic) has joined #archlinux
+2018-10-12 12:38:30	uniusz	Hello, anyone here know option for terminal that output be always on top ?
+2018-10-12 12:38:47	uniusz	like automatic /clear option in that momment when im typing second command
+2018-10-12 12:39:17	grawity	that's going to be fun as soon as you need to type command 2 based on command 1's output
+2018-10-12 12:39:40	 ? 	binarycreations (~rad@84.105.189.80.dyn.plus.net) has joined #archlinux
+2018-10-12 12:39:51	uniusz	true ^^
+2018-10-12 12:39:58	uniusz	but i want that option anyway
+2018-10-12 12:40:00	 ?  	Visigoth (visigoth@unaffiliated/visigoth) has quit (Ping timeout: 246 seconds)
+2018-10-12 12:40:07	Khorne	foo; clear
+2018-10-12 12:40:07	 ? 	fogobogo (~fogobogo@unaffiliated/fogobogo) has joined #archlinux
+2018-10-12 12:40:08	 ?  	shellkr (~shellkr@unaffiliated/shellkr) has quit (Ping timeout: 252 seconds)
+2018-10-12 12:40:10	 ? 	sublimination (~weechat@gateway/tor-sasl/sublimination) has joined #archlinux
+2018-10-12 12:40:21	 ?  	orivej (~orivej@185.65.134.162) has quit (Ping timeout: 246 seconds)
+2018-10-12 12:40:23	post-factum	uniusz: no, you don't want it
+2018-10-12 12:40:33	BrainDamage	zsh has https://github.com/Valiev/almostontop
+2018-10-12 12:40:34	@phrik	Title:GitHub - Valiev/almostontop: almostontop zsh plugin (at github.com)
+2018-10-12 12:40:41	uniusz	but i want to know how to set this up
+2018-10-12 12:40:48	uniusz	post-factum: 
+2018-10-12 12:40:57	BrainDamage	they are free to shot themselves in the foot
+2018-10-12 12:41:08	post-factum	what is the use-case for this?
+2018-10-12 12:41:12	 ? 	x03ff4a9778 (x03ff4a977@240b:10:b3c0:7a00:a47d:5089:9013:1ade) has joined #archlinux
+2018-10-12 12:41:35	BrainDamage	there, bash version too https://github.com/swirepe/alwaysontop
+2018-10-12 12:41:36	@phrik	Title:GitHub - swirepe/alwaysontop: Keep the input line at the top of the terminal (at github.com)
+2018-10-12 12:41:46	 ? 	orcus-de (~orcus_@ppp-46-244-203-145.dynamic.mnet-online.de) has joined #archlinux
+2018-10-12 12:41:55	 ?  	orcus-de (~orcus_@ppp-46-244-203-145.dynamic.mnet-online.de) has quit (Max SendQ exceeded)
+2018-10-12 12:42:17	Khorne	theres also 3000 search results for bash preexec
+2018-10-12 12:42:19	BrainDamage	you can always remove it once you understand the problem
+2018-10-12 12:42:22	 ? 	orcus-de (~orcus_@ppp-46-244-203-145.dynamic.mnet-online.de) has joined #archlinux
+2018-10-12 12:42:31	Khorne	or use zsh and use it's actual preexec hoook
+2018-10-12 12:42:35	 ? 	Visigoth (visigoth@unaffiliated/visigoth) has joined #archlinux
+2018-10-12 12:42:50	grawity	I'd have said preexec but does zsh have a nice way to redisplay the prompt?
+2018-10-12 12:42:56	BrainDamage	sometimes it's better to slam your nose in the problem than argue why it's a bad idea
+2018-10-12 12:42:57	grawity	with all the expansions in $PS1 parsed
+2018-10-12 12:43:00	 ? 	orivej (~orivej@185.65.134.162) has joined #archlinux
+2018-10-12 12:43:12	Khorne	grawity, iirc you could prepend to the ps1 as well
+2018-10-12 12:43:23	post-factum	BrainDamage: ?said brits and voted brexit
+2018-10-12 12:43:33	BrainDamage	that's a non-reversible change
+2018-10-12 12:43:37	Khorne	post-factum, don't ask question to which you don't want to know the answer :P
+2018-10-12 12:43:37	BrainDamage	this is a 1-line edit
+2018-10-12 12:43:51	post-factum	but i want
+2018-10-12 12:43:54	 ? 	kajo (~kajo@2a02:908:2f34:d740:e9ce:9b26:a656:5b95) has joined #archlinux
+2018-10-12 12:43:55	post-factum	lol
+2018-10-12 12:45:30	 ? 	nx345 (~Thunderbi@2a04:cec0:10d6:1cbd:17b2:4793:4b91:b468) has joined #archlinux
+2018-10-12 12:46:34	 ?  	hitori (~hitori@unaffiliated/hitori) has quit (Ping timeout: 276 seconds)
+2018-10-12 12:47:18	 ?  	whislock (~whislock@unaffiliated/whislock) has quit (Quit: WeeChat 2.2)
+2018-10-12 12:47:56	mads-	This might seem like a silly question. I just installed arch on my new machine. I had it on my old machine from 2007 as well. The mouse behaviour seems wonky somehow. And I can't remember what settings I changed on my old computer. Where would I normally look on my old computer to find the 'good' configurations?
+2018-10-12 12:48:14	 ? 	hitori (~hitori@unaffiliated/hitori) has joined #archlinux
+2018-10-12 12:48:26	Khorne	Your desktop environments settings
+2018-10-12 12:48:36	 ? 	apustus (~apustus@unaffiliated/apustus) has joined #archlinux
+2018-10-12 12:49:24	 ?  	Pupnik (~Pupnik@2001:44b8:41c4:ba00:13a8:9262:c94a:b148) has quit (Remote host closed the connection)
+2018-10-12 12:49:50	 ?  	gulzar (~gulzar@14.139.123.36) has quit (Ping timeout: 252 seconds)
+2018-10-12 12:50:09	 ? 	janco (~janco@spf.debosschen.fiberwifihw.nl) has joined #archlinux
+2018-10-12 12:50:13	 ?  	janco (~janco@spf.debosschen.fiberwifihw.nl) has quit (Remote host closed the connection)
+2018-10-12 12:50:43	 ? 	janco (~janco@spf.debosschen.fiberwifihw.nl) has joined #archlinux
+2018-10-12 12:50:51	 ?  	janco (~janco@spf.debosschen.fiberwifihw.nl) has quit (Remote host closed the connection)
+2018-10-12 12:51:01	uniusz	BrainDamage: you write that ?
+2018-10-12 12:51:12	 ?  	orcus-de (~orcus_@ppp-46-244-203-145.dynamic.mnet-online.de) has quit (Quit: ?)
+2018-10-12 12:51:18	BrainDamage	uniusz: sorry?
+2018-10-12 12:51:25	 ? 	janco (~janco@spf.debosschen.fiberwifihw.nl) has joined #archlinux
+2018-10-12 12:52:02	 ? 	segurb (~segurb@unaffiliated/segurb) has joined #archlinux
+2018-10-12 12:52:54	 ? 	noko_ (~noko@178.128.245.227) has joined #archlinux
+2018-10-12 12:53:09	 ?  	janco (~janco@spf.debosschen.fiberwifihw.nl) has quit (Client Quit)
+2018-10-12 12:53:33	uniusz	BrainDamage: what ?
+2018-10-12 12:53:37	uniusz	https://github.com/swirepe/alwaysontop
+2018-10-12 12:53:38	@phrik	Title:GitHub - swirepe/alwaysontop: Keep the input line at the top of the terminal (at github.com)
+2018-10-12 12:53:39	uniusz	that
+2018-10-12 12:53:49	BrainDamage	no
+2018-10-12 12:54:00	 ? 	janco (~janco@spf.debosschen.fiberwifihw.nl) has joined #archlinux
+2018-10-12 12:54:05	 ?  	airwind (~belovent@user149.c3.hrastnik.kabelnet.net) has quit (Ping timeout: 252 seconds)
+2018-10-12 12:54:07	 ? 	hxc0 (~hxc0@unaffiliated/hxc0) has joined #archlinux
+2018-10-12 12:54:08	uniusz	btw, there is no simpler option ?
+2018-10-12 12:54:32	 ? 	Bowl323 (~solan_000@cpc95108-newt39-2-0-cust418.19-3.cable.virginm.net) has joined #archlinux
+2018-10-12 12:55:20	 ?  	Forty-Bot (~kvirc@dhcp-65-68.radford.edu) has quit (Ping timeout: 252 seconds)
+2018-10-12 12:56:17	 ? 	hardfalcon (~hardfalco@x4db6032b.dyn.telefonica.de) has joined #archlinux
+2018-10-12 12:56:56	 ?  	rozica (~rozica@internet-178-58-127-74.narocnik.mobitel.si) has quit (Quit: WeeChat 2.2)
+2018-10-12 12:57:53	 ? 	isgy (~jy@213.152.161.10) has joined #archlinux
+2018-10-12 17:03:36	 - 	irc: disconnected from server
+2018-10-12 17:03:55	 ? 	_sigsegv (~sigsegv@156.222.234.163) has joined #archlinux
+2018-10-12 17:03:55	 - 	Topic for #archlinux is "Welcome to Arch Linux, Good Luck: https://archlinux.org | Rules: https://goo.gl/XWFreH | Pastebins: https://ptpb.pw https://gist.github.com https://bpaste.net | Become an official Arch Tester: https://goo.gl/48qpvG | If you didn't read the topic you will be eaten by a grue | Arch Linux AMA: https://redd.it/9emwtu"
+2018-10-12 17:03:55	 - 	Topic set by phrik (phrik@archlinux/bot/phrik) on  
+2018-10-12 17:03:56	 - 	Channel #archlinux: 1643 nicks (2 ops, 0 voices, 1641 normals)
+2018-10-12 17:03:59	 - 	Channel created on  
+2018-10-12 17:04:36	 ? 	mogorva (~mogorva@88.209.195.47) has joined #archlinux
+2018-10-12 17:04:55	 ?  	enoq (~enoq@2a02:8388:6a87:b080:649f:9456:c1b1:28e4) has quit (Quit: enoq)
+2018-10-12 17:05:17	 ? 	pbeliveau (~user@unaffiliated/pbeliveau) has joined #archlinux
+2018-10-12 17:05:30	uniusz	dobra naprawilem
+2018-10-12 17:05:34	uniusz	dzieki
+2018-10-12 17:05:40	 ?  	pbeliveau (~user@unaffiliated/pbeliveau) has left #archlinux
+2018-10-12 17:06:04	 ?  	Akulen (~Akulen@sas.eleves.ens.fr) has quit (Ping timeout: 245 seconds)
+2018-10-12 17:06:56	 ?  	opthomasprime (~thomas@p54852CA9.dip0.t-ipconnect.de) has quit (Remote host closed the connection)
+2018-10-12 17:07:06	 ?  	outsidecontext (~outsideco@2a02:810b:c340:91c:8ab1:24d0:8546:a73) has quit (Remote host closed the connection)
+2018-10-12 17:07:31	 ? 	outsidecontext (~outsideco@2a02:810b:c340:91c:8ab1:24d0:8546:a73) has joined #archlinux
+2018-10-12 17:07:51	 ? 	goofolph (~goofolph@cpe-74-75-37-20.maine.res.rr.com) has joined #archlinux
+2018-10-12 17:08:06	 ? 	quba42 (~qubap42@nd114.net.atix.de) has joined #archlinux
+2018-10-12 17:08:24	ayekat	uniusz: di=2;i38;5;61 looks wrong
+2018-10-12 17:08:37	 ? 	Banbeucmas (~Banbeucma@123.16.104.61) has joined #archlinux
+2018-10-12 17:08:42	ayekat	(rogue `i` there)
+2018-10-12 17:08:51	 ? 	j605 (~j605@unaffiliated/j605) has joined #archlinux
+2018-10-12 17:08:54	 ? 	irb (NSAEchelon@retribution.maleficarum.org) has joined #archlinux
+2018-10-12 17:09:00	 ? 	dviola (~diego@unaffiliated/dviola) has joined #archlinux
+2018-10-12 17:09:09	 ? 	lobata (~mint@2602:30a:2ee5:74b0:c18:5450:7a1d:54da) has joined #archlinux
+2018-10-12 17:09:12	 ? 	Akulen (~Akulen@sas.eleves.ens.fr) has joined #archlinux
+2018-10-12 17:09:57	 ?  	Starlit-Ghost (~SG@2604:a880:800:a1::12:e001) has quit (Quit: WeeChat 2.3-dev)
+2018-10-12 17:09:59	 ? 	fox8091 (~fox8091@unaffiliated/fox8091) has joined #archlinux
+2018-10-12 17:10:33	 ?  	BazookaTooth (~bob@gateway/tor-sasl/bazookatooth) has quit (Remote host closed the connection)
+2018-10-12 17:11:12	 - 	irc: disconnected from server

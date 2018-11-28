@@ -1,0 +1,44 @@
+2018-10-12 10:46:41		New key binding (context "default"): meta-meta-OQ => /bar scroll buflist * e
+2018-10-12 10:46:41		New key binding (context "default"): meta-meta-OP => /bar scroll buflist * b
+2018-10-12 10:46:41		New key binding (context "default"): meta-OQ => /bar scroll buflist * +100%
+2018-10-12 10:46:41		New key binding (context "default"): meta-OP => /bar scroll buflist * -100%
+2018-10-12 10:46:41		Plugins loaded: alias, aspell, buflist, charset, exec, fifo, fset, irc, logger, perl, python, relay, script, tcl, trigger, xfer
+2018-10-12 10:48:07	=!=	Option "config.*" not found (tip: you can use wildcard "*" in option to see a sublist)
+2018-10-12 10:48:53	=!=	Error: can not merge windows, there's no other window with same size near current one
+2018-10-12 10:49:03	=!=	irc: command "part" must be executed on irc buffer (server or channel)
+2018-10-12 10:49:13		irc: server freenode added
+2018-10-12 10:50:03		Option changed: irc.server_default.nicks = "_sigsegv"  (default: "")
+2018-10-12 10:50:24		Option changed: irc.server_default.username = "sigsegv"  (default: "")
+2018-10-12 10:50:41		Option changed: irc.server.freenode.autoconnect = on  (default if null: off)
+2018-10-12 10:51:10		Option changed: irc.server.freenode.command = "/msg nickserv identify *fallacy*"  (default if null: "")
+2018-10-12 10:52:39		Option changed: irc.server.freenode.autojoin = "#archlinux,#egypt,#linux-kernel"  (default if null: "")
+2018-10-12 11:40:57		fifo: pipe closed
+2018-10-12 11:41:40		Plugins loaded: alias, aspell, buflist, charset, exec, fifo, fset, irc, logger, perl, python, relay, script, tcl, trigger, xfer
+2018-10-12 11:43:52		Option changed: weechat.bar.buflist.position = top  (default: left)
+2018-10-12 11:47:48	 ? 	Error: option "buffers.look.show_number" not found
+2018-10-12 11:48:03	 ? 	Error: option "weechat.buffers.look.show_number" not found
+2018-10-12 11:48:43		Option changed: weechat.bar.status.hidden = on  (default: off)
+2018-10-12 11:49:14		Option changed: weechat.bar.title.hidden = on  (default: off)
+2018-10-12 11:49:31		Option changed: weechat.bar.status.hidden = off
+2018-10-12 11:50:32		Option changed: weechat.bar.buflist.separator = off  (default: on)
+2018-10-12 11:53:52		Option changed: irc.server.freenode.command = "/msg nickserv identify *fallacy*;wait 2000"  (default if null: "")
+2018-10-12 11:54:48		Option changed: weechat.bar.buflist.separator = on
+2018-10-12 11:55:06		Option changed: weechat.bar.status.hidden = off
+2018-10-12 11:55:08		Option changed: weechat.bar.status.hidden = on  (default: off)
+2018-10-12 11:58:35		fifo: pipe closed
+2018-10-12 12:00:33		Plugins loaded: alias, aspell, buflist, charset, exec, fifo, fset, irc, logger, perl, python, relay, script, tcl, trigger, xfer
+2018-10-12 12:01:18		Option changed: weechat.bar.buffers.position = top
+2018-10-12 12:01:31		Option changed: weechat.bar.buflist.position = top  (default: left)
+2018-10-12 12:02:02		Option changed: weechat.bar.nicklist.hidden = off  (default: on)
+2018-10-12 12:04:00		Option changed: weechat.bar.input.size = 0  (default: 1)
+2018-10-12 12:04:57		Option changed: irc.look.item_nick_prefix = off  (default: on)
+2018-10-12 12:05:06		Option changed: irc.look.item_nick_prefix = on
+2018-10-12 12:06:08	 ? 	Option "weechat.bar.status" not found (tip: you can use wildcard "*" in option to see a sublist)
+2018-10-12 12:07:23		Option changed: weechat.bar.input.items = " >,input_text"  (default: "[input_prompt]+(away),[input_search],[input_paste],input_text")
+2018-10-12 12:07:42	 ? 	Error: unknown command "/clear" (type /help for help)
+2018-10-12 12:09:47		Option changed: irc.server.freenode.sasl_username = "_sigsegv"  (default if null: "")
+2018-10-12 12:10:03		Option changed: irc.server.freenode.sasl_password = "*fallacy*"  (default if null: "")
+2018-10-12 12:10:19		Option changed: irc.server.freenode.command = ""  (default if null: "")
+2018-10-12 12:10:22		fifo: pipe closed
+2018-10-12 12:10:24		Plugins loaded: alias, aspell, buflist, charset, exec, fifo, fset, irc, logger, perl, python, relay, script, tcl, trigger, xfer
+2018-10-12 17:11:11		fifo: pipe closed

@@ -1,0 +1,254 @@
+# vim:filetype=i3
+#┌──────────────────────────────────────┐
+#│▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│
+#│▒▒▒▒▒┌────────┐░▒▒▒▒┌──────────────┐░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒│▓▒▒▒▒▒▒▒▒▒▒▒▒▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒└───────────┐▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒┌───────────┘▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒│▓▒▒▒▒▒▒▒▒▒▒▒▒▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒│▓▒▒▒▒▒▒▒▒▒▒▒▒▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒└───────────┐▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒┌───────────┘▓▒│░▒│
+#│▒▒▒▒▒│▓▒▒▒▒▒▒▒│░▒▒▒▒│▓▒▒▒▒▒▒▒▒▒▒▒▒▒│░▒│
+#│▒▒▒▒▒└────────┘░▒▒▒▒└──────────────┘░▒│
+#│▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│
+#└──┐▓▒▒┌─┐▓▒▒▒▒▒▒▒┌──┐▓▒▒┌─────┐▓▒▒▒┌──┘
+#   │▓▒┌┘ │▓▒▒┌─┐▒▒│  │▓▒▒│     │▓┌──┘
+#   │▓┌┘  │┌─┐│ │▓▒│  │▓▒▒│     │▓│
+#   │▓│   ││ ││ │▓▒│  │▓▒▒│     └─┘
+#   │▓│   └┘ ││ └──┘  │▓▒▒│     ┌─┐
+#   │▓│   ┌┐ ││ ┌──┐  ├─┐▓│     │▒│
+#   │▓│   ││ ││ │▒▒│  │▒│▓│     └─┘
+#   ├─┘   ││ ││ │▒▒│  ├─┤▓│
+#         ├┤ └┘ │▒┌┘  │ └─┤
+#   │     │     │▒│
+#   │     ││    │▒│   │   │
+#   │           │▒│
+#         │     └─┘       │
+#   │
+#         │      ▒
+#
+#                ▒
+
+# Colors and Customization {{{
+#exec --no-startup-id ~/scripts/16script/16script.sh $( cat ~/.cache/16script/lastuse )
+
+set_from_resource $base00 color0  #000000
+set_from_resource $base01 color18 #000000
+set_from_resource $base02 color19 #000000
+set_from_resource $base03 color8  #000000
+set_from_resource $base04 color20 #000000
+set_from_resource $base05 color1  #000000
+set_from_resource $base06 color21 #000000
+set_from_resource $base07 color15 #000000
+set_from_resource $base08 color1  #000000
+set_from_resource $base09 color16 #000000
+set_from_resource $base0A color11 #000000
+set_from_resource $base0B color2  #000000
+set_from_resource $base0C color14 #000000
+set_from_resource $base0D color12 #000000
+set_from_resource $base0E color5  #000000
+set_from_resource $base0F color17 #000000
+
+#                       class   border  backgr. text indicator
+client.focused          $base05 $base0B $base00 $base05
+client.focused_inactive $base03 $base03 $base05 $base03
+client.unfocused        $base03 $base03 $base05 $base00
+client.urgent           $base01 $base01 $base05 $base00
+
+new_window pixel 5
+new_float  pixel 5
+
+for_window [class="Terminator"] border none 0
+for_window [class="Google-chrome"] fullscreen enable
+for_window [class="Firefox"] border none 0
+for_window [class="feh"] floating enable
+for_window [class="Spotify"] border none 0
+for_window [class="jetbrains-idea-ce"] border none 0
+
+font pango:dina 22
+# }}}
+
+# Variables {{{
+set $mod Mod4
+set $alt Mod1
+set $terminal terminator
+set $workspace1  "1"
+set $workspace2  "2"
+set $workspace3  "3"
+set $workspace4  "4"
+set $workspace5  "5"
+set $workspace6  "6"
+set $workspace7  "7"
+set $workspace8  "8"
+set $workspace9  "9"
+set $workspace10 "10"
+set $workspace11 "11"
+set $workspace12 "12"
+set $workspace13 "13"
+set $workspace14 "14"
+set $workspace15 "15"
+set $workspace16 "16"
+set $workspace17 "17"
+set $workspace18 "18"
+set $workspace19 "19"
+set $workspace20 "20"
+set $workspace21 "21"
+set $workspace22 "22"
+# }}}
+
+# Window Movement (excluding workspaces) {{{
+
+# terminals
+bindsym $mod+Return  exec --no-startup-id $terminal
+
+# kill
+bindsym $mod+Shift+q kill
+
+# focus
+bindsym $alt+Left  focus left
+bindsym $alt+Down  focus down
+bindsym $alt+Up    focus up
+bindsym $alt+Right focus right
+
+# movement
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# splitting
+bindsym $mod+t split toggle
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# fullscreen
+bindsym $mod+f fullscreen toggle
+
+# container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# floating
+floating_modifier $mod
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# parent/child focus
+bindsym $mod+a focus parent
+# resizing
+bindsym $mod+Left        resize shrink width  5 px or 5 ppt
+bindsym $mod+Down        resize grow   height 5 px or 5 ppt
+bindsym $mod+Up          resize shrink height 5 px or 5 ppt
+bindsym $mod+Right       resize grow   width  5 px or 5 ppt
+
+# }}}
+
+# Gaps {{{
+gaps inner 25
+gaps outer 0
+
+bindsym $mod+minus       gaps inner all minus 5
+bindsym $mod+plus        gaps inner all plus  5
+bindsym $mod+Shift+minus gaps outer all minus 5
+bindsym $mod+Shift+plus  gaps outer all plus  5
+# }}}
+
+# Workspaces (including window movement) {{{
+
+# movement
+bindsym $mod+Shift+1   move container to workspace $workspace1
+bindsym $mod+Shift+2   move container to workspace $workspace2
+bindsym $mod+Shift+3   move container to workspace $workspace3
+bindsym $mod+Shift+4   move container to workspace $workspace4
+bindsym $mod+Shift+5   move container to workspace $workspace5
+bindsym $mod+Shift+6   move container to workspace $workspace6
+bindsym $mod+Shift+7   move container to workspace $workspace7
+bindsym $mod+Shift+8   move container to workspace $workspace8
+bindsym $mod+Shift+9   move container to workspace $workspace9
+bindsym $mod+Shift+0   move container to workspace $workspace10
+bindsym $mod+Shift+F1  move container to workspace $workspace11
+bindsym $mod+Shift+F2  move container to workspace $workspace12
+bindsym $mod+Shift+F3  move container to workspace $workspace13
+bindsym $mod+Shift+F4  move container to workspace $workspace14
+bindsym $mod+Shift+F5  move container to workspace $workspace15
+bindsym $mod+Shift+F6  move container to workspace $workspace16
+bindsym $mod+Shift+F7  move container to workspace $workspace17
+bindsym $mod+Shift+F8  move container to workspace $workspace18
+bindsym $mod+Shift+F9  move container to workspace $workspace19
+bindsym $mod+Shift+F10 move container to workspace $workspace20
+bindsym $mod+Shift+F11 move container to workspace $workspace21
+bindsym $mod+Shift+F12 move container to workspace $workspace22
+
+# active workspace
+bindsym $mod+1   workspace $workspace1
+bindsym $mod+2   workspace $workspace2
+bindsym $mod+3   workspace $workspace3
+bindsym $mod+4   workspace $workspace4
+bindsym $mod+5   workspace $workspace5
+bindsym $mod+6   workspace $workspace6
+bindsym $mod+7   workspace $workspace7
+bindsym $mod+8   workspace $workspace8
+bindsym $mod+9   workspace $workspace9
+bindsym $mod+0   workspace $workspace10
+bindsym $mod+F1  workspace $workspace11
+bindsym $mod+F2  workspace $workspace12
+bindsym $mod+F3  workspace $workspace13
+bindsym $mod+F4  workspace $workspace14
+bindsym $mod+F5  workspace $workspace15
+bindsym $mod+F6  workspace $workspace16
+bindsym $mod+F7  workspace $workspace17
+bindsym $mod+F8  workspace $workspace18
+bindsym $mod+F9  workspace $workspace19
+bindsym $mod+F10 workspace $workspace20
+bindsym $mod+F11 workspace $workspace21
+bindsym $mod+F12 workspace $workspace22
+
+workspace $workspace1 gaps inner 0
+workspace $workspace4 gaps inner 0
+workspace $workspace2 gaps inner 0
+
+# }}}
+
+# Other Keybindings {{{
+#bindsym Print        exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym Print        exec --no-startup-id maim ~/Pictures/$(date +%s).png
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Exit?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+r exec --no-startup-id "i3-msg restart"
+bindsym $mod+d exec --no-startup-id rofi -show run -lines 10 -width 40 -theme ~/.cache/wal/colors-rofi-dark.rasi drun -show-icons
+bindsym $mod+l exec --no-startup-id betterlockscreen -l dimblur -t "Who am I?"
+
+# }}}
+
+# Pulse Audio Controls {{{
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5%
+# }}}
+
+# Media Player Controls {{{
+bindsym XF86AudioStop exec --no-startup-id mpc clear
+bindsym XF86AudioNext exec --no-startup-id mpc next
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+bindsym XF86AudioPrev exec --no-startup-id mpc prev
+# }}}
+
+# Backlight Controls {{{
+bindsym XF86MonBrightnessUp exec --no-startup-id brightlight -i 500
+bindsym XF86MonBrightnessDown exec --no-startup-id brightlight -d 500
+# }}}
+
+# Autostart {{{
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec        --no-startup-id dunst
+exec        --no-startup-id wal -R
+exec        --no-startup-id compton -b
+exec        --no-startup-id terminator
+exec        --no-startup-id nm-applet
+exec        --no-startup-id numlockx on
+# }}}
